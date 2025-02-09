@@ -59,3 +59,48 @@ console.log(arr10[0].password);
 
 //- описати масив, в якому буде зберігатись інформація про температуру вранці,
 // вдень і ввечері за термін в 7 днів. Як зробити цей масив - вам потрібно подумати. Нормальних варіантів
+
+let weather =[
+    {day:"Monday",morningTemp: 5, dayTemp: 7, eveningTemp: 1},
+    {day: "Tuesday",morningTemp: 6, dayTemp: 8, eveningTemp: 2},
+    { day: "Wednesday", morningTemp: 7, dayTemp: 9, eveningTemp: 3 },
+    { day: "Thursday", morningTemp: 8, dayTemp: 10, eveningTemp: 4 },
+    { day: "Friday", morningTemp: 9, dayTemp: 11, eveningTemp: 5 },
+    { day: "Saturday", morningTemp: 10, dayTemp: 12, eveningTemp: 6 },
+    { day: "Sunday", morningTemp: 11, dayTemp: 13, eveningTemp: 7 }
+]
+
+
+//- Є змінна х, якій ви надаєте довільне числове значення.
+// Якщо змінна x не дорівнює нулю, виведіть 'Вірно',
+// інакше виведіть 'Невірно'. Перевірте  скрипт при a, що дорівнює 1, 0, -3
+
+
+let x = Number(prompt("Enter any number"));
+
+if (x !== 0) {
+    console.log("Вірно");
+} else {
+    console.log("Невірно");
+}
+
+//- Дано змінну time яка рівна числу від 0 до 59. Потрібно написати код,
+// який перевірить, до якої четверті години попадає число
+// (в першу, другу, третю или четверту частину години).
+
+
+debugger
+let time = Number(prompt("Введите число от 0 до 59"));
+
+if (time >= 0 && time <= 14) {
+    console.log("Первая четверть");
+} else if (time >= 15 && time <= 29) {
+    console.log("Вторая четверть");
+} else if (time >= 30 && time <= 44) {
+    console.log("Третья четверть");
+} else if (time >= 45 && time <= 59) {
+    console.log("Четвертая четверть");
+} else {
+    console.log("Ошибка: введите число от 0 до 59!");
+}
+
