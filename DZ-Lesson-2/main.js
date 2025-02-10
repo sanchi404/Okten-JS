@@ -1,7 +1,7 @@
 // #67kfznmiMl
 // - Створити масив, наповнити його 10 елементами будь-якого типу, вивести кожен елемент в консоль
 
-
+//
 let arr = [1, 2, 3, 4, "Js", 3.14, "oct", 12, 13, 14]
 console.log(arr[0]);
 console.log(arr[1]);
@@ -104,3 +104,104 @@ if (time >= 0 && time <= 14) {
     console.log("Ошибка: введите число от 0 до 59!");
 }
 
+//- У змінній day дано якесь число від 1 до 31.
+// Потрібно визначити, у яку половину(декаду) місяця потрапляє це число (у першу, другу чи третю).
+//
+let day = Number(prompt("Введите число от 0 до 31"))
+
+if (day >= 0 && day <= 10) {
+    console.log("Первая половина декады")
+} else if (day >= 11 && day <= 20) {
+    console.log("Вторая половина декады")
+} else if (day >= 21 && day <= 31) {
+    console.log("Третья половина декады")
+}
+
+//- Скласти розклад на тиждень за домопоги switch.
+// Користувач вводить порядковий номер дня тижня і на екрані відображається інфа що заплановано на цей день
+// (можна замість плану на день, назву дня англійською).
+
+let shadow = prompt("Введите день недели")
+switch (shadow) {
+    case "Monday":
+        console.log("There's a 19:00 study session at the OKTEN school.")
+        break;
+    case "Tuesday":
+        console.log("Doing homework and watching courses today.")
+        break;
+    case "Wednesday":
+        console.log("There's a 19:00 study session at the OKTEN school.")
+        break;
+    case "Thursday":
+        console.log("Doing homework and watching courses today.")
+        break;
+    case "Friday":
+        console.log("There's a 19:00 study session at the OKTEN school.");
+        break;
+    case "Saturday":
+        console.log("For the 10:00 a.m. English class")
+        break;
+    case "Sunday":
+        console.log("We can rest and do homework in the evening")
+        break;
+}
+
+
+//- Користувач вводить або має два числа.
+// Потрібно знайти та вивести максимальне число з тих двох .
+// Також потрібно врахувати коли введені рівні числа.
+
+let user1 = Number(prompt("Enter number"))
+let user2 = Number(prompt("Enter number"))
+if (user1 > user2) {
+    console.log("Число от user1 больше, чем от user2:", user1);
+} else if (user1 < user2) {
+    console.log("Число от user2 больше, чем от user1:", user2);
+} else {
+    console.log("Числа от user1 и user2 равны между собой:", user1, user2);
+}
+
+
+//- є змінна х, яка може прийняти будь-яке значення (стрінг, число, undefined, null  і тд включно). Напишіть код який,
+//  буде присвоювати змінній х значення "default"
+//  якщо ви намагаєтесь присвоїти в неї falsy-значення (хибноподібні, тобто ті, які приводиться до false, а це 0 null undefined і тд).
+
+let xxx = prompt("Введите любое значение")
+if (!xxx || xxx === "0") {
+    xxx = "default";
+}
+
+console.log(x);
+
+
+// - з файлу arrays.js (лежить в папці 2023 plan ) взяти масив coursesAndDurationArray.
+// За допомоги іф перевірити кожен його елемент на тривалість навчання.
+// У випадку якщо тривалість довша за 5 місяців вивести в консоль "Супер".
+
+let coursesAndDurationArray = [
+    {title: 'JavaScript Complex', monthDuration: 5},
+    {title: 'Java Complex', monthDuration: 6},
+    {title: 'Python Complex', monthDuration: 6},
+    {title: 'QA Complex', monthDuration: 4},
+    {title: 'FullStack', monthDuration: 7},
+    {title: 'Frontend', monthDuration: 4}
+];
+debugger
+if (coursesAndDurationArray[0].monthDuration > 5) {
+    console.log("Супер");
+}
+if (coursesAndDurationArray[1].monthDuration > 5) {
+    console.log("Супер")
+}
+if (coursesAndDurationArray[2].monthDuration > 5) {
+    console.log("Супер")
+}
+if (coursesAndDurationArray[3].monthDuration > 5) {
+    console.log("Супер")
+}
+if (coursesAndDurationArray[4].monthDuration > 5) {
+    console.log("Супер")
+}
+if (coursesAndDurationArray[5].monthDuration > 5) {
+    console.log("Супер")
+}
