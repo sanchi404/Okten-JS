@@ -1,8 +1,7 @@
 //- створити функцію яка обчислює та повертає площу прямокутника зі сторонами а і б
 
 function rectangle(a,b) {
-    let x = a*b;
-    return x
+    return a * b
 }
 
 console.log(rectangle(5,5));
@@ -10,8 +9,7 @@ console.log(rectangle(5,5));
 //- створити функцію яка обчислює та повертає площу кола з радіусом r
 
 function circleArea(r){
-    let x = r * r * Math.PI;
-    return x
+    return r * r * Math.PI
 }
 console.log(circleArea(5));
 
@@ -19,15 +17,14 @@ console.log(circleArea(5));
 //- створити функцію яка обчислює та повертає площу циліндру висотою h, та радіутом r
 
 function cylinderArea(r,h) {
-    let x = 2 * Math.PI * r * (r + h);
-    return x
+    return 2 * Math.PI * r * (r + h)
 }
 console.log(cylinderArea(5,2));
 
 //- створити функцію яка приймає масив та виводить кожен його елемент
 
 function array(user) {
-    for (let i = 0; i < user.length; i++) {
+    for (let i = 0; i < users.length; i++) {
        console.log(user[i]);
     }
 
@@ -76,18 +73,19 @@ document.write(`</ul>`);
 // Кількість li визначається другим аргументом, який є числовим (тут використовувати цикл) та виводить його через document.write
 
 
-document.write(`<ul>`);
+
 
 function nav2 (li,sum){
+    document.write(`<ul>`);
     for (let i = 0; i < sum; i++) {
         document.write('<li>' + li + '</li>');
     }
+    document.write(`</ul>`);
 }
 
 nav2("Okten",10);
 
 
-document.write(`</ul>`);
 
 
 //- створити функцію яка приймає масив примітивних елементів (числа,стрінги,булеві),
@@ -127,7 +125,7 @@ array3([
 
 function findMinElement(elements){
     let min = elements[0];
-    for (let i = 0; i < elements.length; i++) {
+    for (let i = 1; i < elements.length; i++) {
         if (elements[i] < min) {
             min = elements[i];
         }
@@ -140,6 +138,54 @@ function findMinElement(elements){
 let result = findMinElement ([111,21,12,53,4,5,7,8,9,10]);
 console.log(result);
 
-// arr = [10,1,2,3,4,5,6,7,8,9,10];
-// m = arr.sort((a, b) => a - b).shift();
-// console.log(m);
+
+//- створити функцію sum(arr) яка приймає масив чисел,
+// сумує значення елементів масиву та повертає його. Приклад sum([1,2,10]) //->13
+
+function sum(arr){
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+
+
+
+let num = sum([1,2,10,2])
+console.log(num)
+
+//- створити функцію swap(arr,index1,index2). Функція міняє місцями значення у відповідних індексах
+// Приклад  swap([11,22,33,44],0,1) //=> [22,11,33,44]
+
+
+function swap(arr,index1,index2){
+    let x = arr[index1]
+    arr[index1] = arr[index2]
+    arr[index2] = x
+
+}
+
+let arr = [11, 22, 33, 44];
+swap(arr, 0, 1);
+console.log(arr);
+
+
+//- Написати функцію обміну валюти exchange(sumUAH,currencyValues,exchangeCurrency)
+// Приклад exchange(10000,
+// [{currency:'USD',value:25},{currency:'EUR',value:42}],
+// 'USD') // => 400
+
+
+function exchange(sumUAH,currencyValues,exchangeCurrency){
+    let choseCurrency;
+    for (let item of currencyValues ){
+        if (item.currency === exchangeCurrency){
+            choseCurrency = item;
+        }
+    }
+    return sumUAH / choseCurrency.value;
+}
+
+console.log(exchange(1000, [{currency:'USD',value:25},{currency:'EUR',value:42}], 'USD'));
