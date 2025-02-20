@@ -131,3 +131,133 @@ console.log(xxx1)
 //     value: '', // '6'-'10', 'ace','jack','queen','king'
 //     color:'', // 'red','black'
 // }
+
+
+
+// let suits = ['spade', 'diamond','heart', 'clubs']
+// let values = ['6','7', '8', '9', '10', 'ace','jack','queen','king']
+// let cards= []
+// for (let suit of suits) {
+//     for (let item of values) {
+//         const card = ({cardSuit: suit, value: item});
+//         if (suit === 'heart'|| suit === 'diamond') {
+//             card.collor = 'red';
+//         }else {
+//             card.collor = 'black';
+//         }
+//         cards.push(card);
+//     }
+// }
+// console.log(cards);
+//
+// console.log(cards.find(card => card.value === 'ace'&& card.cardSuit === 'spade'));
+// console.log(cards.filter(card => card.value === '6'));
+// console.log(cards.filter(card => card.collor === 'red'));
+// console.log(cards.filter(card => card.cardSuit === 'diamond'));
+// console.log(cards.filter(card => card.cardSuit === 'clubs' && ['9', '10', 'jack', 'queen', 'king', 'ace'].includes(card.value)));
+
+
+//#EP5I1UUzAX
+// Взяти описану колоду карт, та за допомоги reduce упакувати всі карти по "мастях" в об'єкт
+// {
+//     spades:[],
+//     diamonds:[],
+//     hearts:[],
+//     clubs:[]
+// }
+
+
+
+let suits = ['spade', 'diamond', 'heart', 'clubs'];
+let values = ['6', '7', '8', '9', '10', 'ace', 'jack', 'queen', 'king'];
+let cards = [];
+
+for (let suit of suits) {
+    for (let item of values) {
+        const card = { cardSuit: suit, value: item };
+        if (suit === 'heart' || suit === 'diamond') {
+            card.color = 'red';
+        } else {
+            card.color = 'black';
+        }
+        cards.push(card);
+    }
+}
+
+console.log(cards);
+
+const groupedBySuits = cards.reduce((acc, card) => {
+    switch (card.cardSuit) {
+        case 'spade':
+            acc.spades.push(card);
+            break;
+        case 'diamond':
+            acc.diamonds.push(card);
+            break;
+        case 'heart':
+            acc.hearts.push(card);
+            break;
+        case 'clubs':
+            acc.clubs.push(card);
+            break;
+    }
+    return acc;
+}, {
+    spades: [],
+    diamonds: [],
+    hearts: [],
+    clubs: []
+});
+
+console.log(groupedBySuits);
+
+//#4LJn7zBx
+// взяти з arrays.js масив coursesArray
+// --написати пошук всіх об'єктів, в яких в modules є sass
+// --написати пошук всіх об'єктів, в яких в modules є docker
+
+
+let coursesArray = [
+    {
+        title: 'JavaScript Complex',
+        monthDuration: 5,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'node.js']
+    },
+    {
+        title: 'Java Complex',
+        monthDuration: 6,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'angular', 'aws', 'docker', 'git', 'java core', 'java advanced']
+    },
+    {
+        title: 'Python Complex',
+        monthDuration: 6,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'angular', 'aws', 'docker', 'python core', 'python advanced']
+    },
+    {
+        title: 'QA Complex',
+        monthDuration: 4,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'git', 'QA/QC']
+    },
+    {
+        title: 'FullStack',
+        monthDuration: 7,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'node.js', 'python', 'java']
+    },
+    {
+        title: 'Frontend',
+        monthDuration: 4,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'sass']
+    }
+];
+
+const coursesWithSass = coursesArray.filter(course => course.modules.includes('sass'));
+console.log("Courses with SASS:", coursesWithSass);
+
+const coursesWithDocker = coursesArray.filter(course => course.modules.includes('docker'));
+console.log("Courses with Docker:", coursesWithDocker);
