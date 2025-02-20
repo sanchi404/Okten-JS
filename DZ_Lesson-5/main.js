@@ -164,3 +164,6 @@ let exchange = (sumUAH,currencyValues,exchangeCurrency) => {
 }
 console.log(exchange(1000, [{currency:'USD',value:25},{currency:'EUR',value:42}], 'USD'));
 
+
+
+
