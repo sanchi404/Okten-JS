@@ -227,5 +227,52 @@ let prince = new Prince("Filip", 21, 39);
 for (let item of cinderellas) {
     if (item.footSize === prince.shoeSize) {
         console.log(`Принц ${prince.name} знайшов свою Попелюшку! Це ${item.name}, їй ${item.age} років.`);
+        break;
     }
 }
+
+
+let xa = [1,2,3,5,6,7,8,(3*3)]
+console.log(xa);
+
+
+//#gsKLAsNWM
+// *Через Array.prototype. створити власний foreach, filter
+Array.prototype.myForEach = function(callback) {
+    for (let item of this) {
+        callback(item);
+    }
+};
+
+[23, 43, 22, 21].myForEach((mass) => console.log(mass));
+
+Array.prototype.myFilter = function(call) {
+    const arr = [];
+    for (let item of this) {
+        if (call(item)) {
+            arr.push(item);
+        }
+    }
+    return arr;
+};
+
+
+// з filter
+const users1 = [
+    { id: 1, name: "Артем", age: 25, email: "artem@mail.com" },
+    { id: 2, name: "Ольга", age: 30, email: "olga@mail.com" },
+    { id: 3, name: "Иван", age: 28, email: "ivan@mail.com" },
+    { id: 4, name: "Екатерина", age: 22, email: "ekaterina@mail.com" },
+    { id: 5, name: "Алексей", age: 35, email: "alexey@mail.com" },
+    { id: 6, name: "Мария", age: 27, email: "maria@mail.com" },
+    { id: 7, name: "Дмитрий", age: 40, email: "dmitry@mail.com" },
+    { id: 8, name: "Татьяна", age: 24, email: "tatyana@mail.com" },
+    { id: 9, name: "Сергей", age: 32, email: "sergey@mail.com" },
+    { id: 10, name: "Наталья", age: 29, email: "natalya@mail.com" }
+];
+
+console.log(users1);
+
+const filteredUsers1 = users1.myFilter(user => user.id === 1);
+
+console.log(filteredUsers1);
