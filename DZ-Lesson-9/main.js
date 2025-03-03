@@ -41,3 +41,88 @@ arr.forEach(element => {
 console.log(arr);
 
 document.body.appendChild(blockArr);
+
+
+//#jeBqHV525U5
+// - Є масив
+// let coursesAndDurationArray = [
+//     {title: 'JavaScript Complex', monthDuration: 5},
+//     {title: 'Java Complex', monthDuration: 6},
+//     {title: 'Python Complex', monthDuration: 6},
+//     {title: 'QA Complex', monthDuration: 4},
+//     {title: 'FullStack', monthDuration: 7},
+//     {title: 'Frontend', monthDuration: 4}
+// ];
+// Для кожного елементу масиву зробити блок в якому вивести інформацію про title та monthDuration
+// Завдання робити через цикли.
+
+let coursesAndDurationArray = [
+    {title: 'JavaScript Complex', monthDuration: 5},
+    {title: 'Java Complex', monthDuration: 6},
+    {title: 'Python Complex', monthDuration: 6},
+    {title: 'QA Complex', monthDuration: 4},
+    {title: 'FullStack', monthDuration: 7},
+    {title: 'Frontend', monthDuration: 4}
+];
+//
+// for (let userInfo of coursesAndDurationArray) {
+//     let h2 = document.createElement("h2")
+//     h2.classList.add('userInfo');
+//     h2.innerText = userInfo.title;
+//     document.body.appendChild(h2);
+//     console.log(h2);
+//
+//     let p = document.createElement("p");
+//     p.classList.add('userInfo');
+//     p.innerText = userInfo.monthDuration;
+//     document.body.appendChild(p);
+//
+// }
+
+for (let userInfo of coursesAndDurationArray) {
+    let container = document.createElement("div");
+    let h2 = document.createElement("h2");
+    let p = document.createElement("p");
+    h2.textContent = userInfo.title;
+    p.textContent = userInfo.monthDuration;
+    container.appendChild(h2); container.appendChild(p);
+    document.body.appendChild(container);
+}
+
+//#Kx1xgoKy8
+// - Є масив
+// let coursesAndDurationArray = [
+//     {title: 'JavaScript Complex', monthDuration: 5},
+//     {title: 'Java Complex', monthDuration: 6},
+//     {title: 'Python Complex', monthDuration: 6},
+//     {title: 'QA Complex', monthDuration: 4},
+//     {title: 'FullStack', monthDuration: 7},
+//     {title: 'Frontend', monthDuration: 4}
+// ];
+//
+// За допомоги скріпта для кожного елементу масиву зробити <div class='item'> ,  в якому буде <h1 class='heading'>  з title  елементу, та <p class='description'> з monthDuration елементу.
+// Завдання робити через цикли.
+
+let coursesAndDurationArray1 = [
+    {title: 'JavaScript Complex', monthDuration: 5},
+    {title: 'Java Complex', monthDuration: 6},
+    {title: 'Python Complex', monthDuration: 6},
+    {title: 'QA Complex', monthDuration: 4},
+    {title: 'FullStack', monthDuration: 7},
+    {title: 'Frontend', monthDuration: 4}
+];
+
+
+for(const xxx of coursesAndDurationArray1) {
+    let div = document.createElement("div");
+    div.classList.add('item');
+    let h1 = document.createElement("h1");
+    h1.classList.add('heading');
+    let p1 = document.createElement("p");
+    p1.classList.add ('description');
+    h1.textContent = xxx.title;
+    p1.textContent = xxx.monthDuration;
+    div.append(h1,p1);
+    document.body.appendChild(div);
+    console.log(div);
+}
