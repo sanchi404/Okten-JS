@@ -36,3 +36,67 @@ buttonBlock.onclick = function () {
         alert('Доступ разрешён!')
     }
 }
+
+//#ymAmN2xJ
+// Стоврити форму з трьома полями для name,sruname,age та кнопкою.
+// При натисканні на кнопку зчитати данні з полів, та вивести об'єкт в документ. Іншими словами : заповниои форму, натиснули кнопку, під формою з'явився блок з вашим об'єктом
+
+
+let divFormBlock = document.createElement("div");
+let inputFormBlock1 = document.createElement("input");
+let inputFormBlock2 = document.createElement("input");
+let inputFormBlock3 = document.createElement("input");
+let buttonFormBlock = document.createElement("button");
+
+
+inputFormBlock1.placeholder = "Enter your name";
+inputFormBlock2.placeholder = "Enter your surname";
+inputFormBlock3.placeholder = "Enter your age";
+buttonFormBlock.textContent = "Click Here!";
+
+divFormBlock.append(inputFormBlock1,inputFormBlock2,inputFormBlock3,buttonFormBlock);
+document.body.appendChild(divFormBlock);
+
+let resultDivBlock = document.createElement("div");
+
+buttonFormBlock.onclick = function () {
+    let name = inputFormBlock1.value;
+    let surname = (inputFormBlock2.value);
+    let age = Number(inputFormBlock3.value);
+    resultDivBlock.textContent = `Name: ${name}, Surname: ${surname}, Age: ${age}`;
+
+}
+
+
+document.body.appendChild(resultDivBlock);
+
+
+// #2VaLt4vDczH
+// є сторінка, на якій є блок, я кому знаходиьтся цифра. написати код, який при кожному перезавантажені сторінки буде додавати до неї +1
+
+let lokalDivBlock = document.createElement("div");
+lokalDivBlock.id = "counter";
+
+document.body.appendChild(lokalDivBlock);
+
+let item = +localStorage.getItem("name"); //смотрел подсказку у Сергея так как изначально поставил || 0 и оно просто мне плюсовало 1 к предыдущей единичке (01111)
+item +=1;
+localStorage.setItem("name", item);
+
+lokalDivBlock.textContent = item;
+document.body.appendChild(lokalDivBlock);
+
+
+// #LhSfdhM3
+// Є сторінка index.html (назва довільна), при відвідуванні якої в локальне сховще, в масив sessionsList зберігається інформація про дату та час відвідування сторінки.
+// Є  сторінка sessionsListPage.html (назва довільна), при відвідуванні якої потрібно відмалювати
+// всю інформацію про відвідування сторінки index.html. Інфу НЕ виводити в консоль, а малювати в DOM
+
+
+
+let now = new Date().toLocaleString();
+
+let session = JSON.parse(localStorage.getItem("session")) || [];
+session.push(now)
+localStorage.setItem("session", JSON.stringify(session));
+

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    const sessions = JSON.parse(localStorage.getItem("session")) || [];
+
+    let SessionList = document.createElement('div')
+
+    sessions.forEach(element => {
+        let sessionTime = document.createElement('p')
+        sessionTime.textContent = `Посещение: ${element}`
+        SessionList.appendChild(sessionTime)
+    })
+
+    document.body.appendChild(SessionList)
+</script>
+
+</body>
+</html>
