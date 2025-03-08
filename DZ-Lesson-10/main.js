@@ -100,3 +100,45 @@ let session = JSON.parse(localStorage.getItem("session")) || [];
 session.push(now)
 localStorage.setItem("session", JSON.stringify(session));
 
+
+//створити конвертор ваги з кг в фунти.
+// данні заповнюються через інпут. При введенні даних обрахунок стається миттєво, без натискань додаткових кнопок
+
+let convert = document.createElement('div')
+let inputConvert = document.createElement("input");
+
+let resultConvert = document.createElement("div");
+let resultText = document.createElement("p");
+
+inputConvert.placeholder = "Enter Kg";
+
+convert.appendChild(inputConvert);
+convert.appendChild(resultConvert);
+resultConvert.appendChild(resultText);
+
+document.body.appendChild(convert);
+
+inputConvert.addEventListener("input", function () {
+    let kg = Number(inputConvert.value);
+    let pounds = kg * 2.20462;
+    resultText.textContent = `Фунты: ${pounds.toFixed(2)}`;
+})
+
+
+
+
+//#RbQGnH5DuC
+// В localStorage зберігаються масиви. Вам потрібно зробити функцію,
+// які дістає потрібний вам масив з localStorage та додає в нього об'єкт
+// сигнатура функції -
+// addToLocalStorage(arrayName:string,objToAdd:any{}):void
+
+function addToLocalStorage (arrayName,objToAdd){
+    let getArray = JSON.parse(localStorage.getItem(arrayName)) || {};
+    getArray.push(objToAdd);
+    localStorage.setItem(arrayName, JSON.stringify(getArray));
+}
+
+addToLocalStorage("session", { name: "Karlos", age: 18 });
+
+
