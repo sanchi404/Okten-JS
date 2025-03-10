@@ -133,12 +133,143 @@ inputConvert.addEventListener("input", function () {
 // сигнатура функції -
 // addToLocalStorage(arrayName:string,objToAdd:any{}):void
 
+
 function addToLocalStorage (arrayName,objToAdd){
     let getArray = JSON.parse(localStorage.getItem(arrayName)) || {};
+    // debugger
+    console.log(getArray);
     getArray.push(objToAdd);
+    console.log(getArray);
     localStorage.setItem(arrayName, JSON.stringify(getArray));
 }
 
-addToLocalStorage("session", { name: "Karlos", age: 18 });
+addToLocalStorage("session", { name: "Santa", age: 25 });
 
 
+//  Створити 3 інпута та кнопку. Один визначає кількість рядків, другий - кількість ячеєк, третій вмиіст ячеєк.
+// При натисканні кнопки, вся ця інформація зчитується і формується табличка, з відповідним вмістом.
+
+let divBlockTable = document.createElement("div");
+let inputRows = document.createElement("input");
+let inputCols = document.createElement("input");
+let inputContent = document.createElement("input");
+let buttonBlockTable = document.createElement("button");
+buttonBlockTable.innerHTML = "Create Table!";
+inputRows.placeholder = "Enter the number of rows";
+inputCols.placeholder = "Enter the number Cols"
+inputContent.placeholder = "Enter for cell text"
+
+divBlockTable.append(inputRows,inputCols,inputContent,buttonBlockTable);
+document.body.appendChild(divBlockTable);
+
+
+buttonBlockTable.onclick = function () {
+    let rows = Number(inputRows.value);
+    let cols = Number(inputCols.value);
+    let content = inputContent.value;
+    let table = document.createElement("table");
+
+    for (let i = 0; i < rows; i++) {
+        let tr = document.createElement("tr");
+
+        for (let j = 0; j < cols; j++) {
+            let td = document.createElement("td");
+            td.innerText = content;
+            tr.appendChild(td);
+        }
+
+        table.appendChild(tr);
+    }
+
+    document.body.appendChild(table);
+}
+
+// *** (подібне було вище, але...будьте уважні в другій частині) створити сторінку з довільним блоком, в середині якого є значення "100грн"
+// при перезавантаженні сторінки до значаення додається по 10грн, але !!!
+//  зміна ціни відбувається тільки на перезавантаження, які відбулись пізніше ніж 10 секунд після попереднього.
+//  При перезавантаженні, яке відбулось раніше ніж минуло 10 секунд - нічого не відбувається
+
+let divBlockUAH = document.createElement("div");
+divBlockUAH.id = "price";
+
+let UAH = +localStorage.getItem("UAH");
+if (!UAH){
+    UAH = 100;
+    localStorage.setItem("UAH", UAH)
+}
+
+let lastUpdate = +localStorage.getItem("LastUpdate");
+let newData = Date.now();
+if (!lastUpdate || newData - lastUpdate > 10000) {  //!lastUpdate подсказал добавить chatGPT так как надо проверять
+    UAH += 10;
+    localStorage.setItem("UAH", UAH);
+    localStorage.setItem("LastUpdate", newData);
+}
+
+divBlockUAH.innerText = `${UAH} грн`;
+document.body.appendChild(divBlockUAH);
+
+
+//***PAGINATION
+// зробити масив на 100 об'єктів та дві кнопки prev next
+// при завантажені сторінки з'являються перші 10 об'єктів.
+// При натисканні next виводяться наступні 10 об'єктів
+// При натисканні prev виводяться попередні 10 об'єктів
+
+
+const dataArray = [];
+
+for (let i = 1; i <= 100; i++) {
+    dataArray.push({ id: i, name: `Item ${i}` });
+}
+
+console.log(dataArray);
+
+const arrayDivBlock = document.createElement("div");
+const rightButton = document.createElement("button");
+const leftButton = document.createElement("button");
+
+rightButton.innerText = 'Next'
+leftButton.innerText = 'Previous';
+
+document.body.appendChild(leftButton);
+document.body.appendChild(rightButton);
+document.body.appendChild(arrayDivBlock);
+
+let currentPage = 1;
+const itemsPerPage = 10;
+const totalPages = Math.ceil(dataArray.length / itemsPerPage);
+
+// Функция отображения текущей страницы
+function renderPage() {
+    arrayDivBlock.innerHTML = ''; // Очищаем блок
+
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const currentItems = dataArray.slice(startIndex, endIndex);
+
+    currentItems.forEach(item => {
+        const div = document.createElement('div');
+        div.classList.add('item');
+        div.textContent = `ID: ${item.id}, Name: ${item.name}`;
+        arrayDivBlock.appendChild(div);
+    });
+}
+
+// Обработчики кнопок
+rightButton.onclick = function () {
+    if (currentPage < totalPages) {
+        currentPage++;
+        renderPage();
+    }
+};
+
+leftButton.onclick = function () {
+    if (currentPage > 1) {
+        currentPage--;
+        renderPage();
+    }
+};
+
+// Первая отрисовка
+renderPage();
