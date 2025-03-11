@@ -200,7 +200,7 @@ if (!UAH){
 
 let lastUpdate = +localStorage.getItem("LastUpdate");
 let newData = Date.now();
-if (!lastUpdate || newData - lastUpdate > 10000) {  //!lastUpdate подсказал добавить chatGPT так как надо проверять
+if (!lastUpdate || newData - lastUpdate > 10000) {  //!lastUpdate подсказал добавить chatGPT так как надо проверять есть ли какой-то обьект или нету!
     UAH += 10;
     localStorage.setItem("UAH", UAH);
     localStorage.setItem("LastUpdate", newData);
@@ -238,38 +238,6 @@ document.body.appendChild(arrayDivBlock);
 
 let currentPage = 1;
 const itemsPerPage = 10;
-const totalPages = Math.ceil(dataArray.length / itemsPerPage);
 
-// Функция отображения текущей страницы
-function renderPage() {
-    arrayDivBlock.innerHTML = ''; // Очищаем блок
 
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const currentItems = dataArray.slice(startIndex, endIndex);
-
-    currentItems.forEach(item => {
-        const div = document.createElement('div');
-        div.classList.add('item');
-        div.textContent = `ID: ${item.id}, Name: ${item.name}`;
-        arrayDivBlock.appendChild(div);
-    });
-}
-
-// Обработчики кнопок
-rightButton.onclick = function () {
-    if (currentPage < totalPages) {
-        currentPage++;
-        renderPage();
-    }
-};
-
-leftButton.onclick = function () {
-    if (currentPage > 1) {
-        currentPage--;
-        renderPage();
-    }
-};
-
-// Первая отрисовка
-renderPage();
+// Дальше я не понимаю что его делать и я сварился на этом моменте
